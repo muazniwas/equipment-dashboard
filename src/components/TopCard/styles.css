@@ -1,0 +1,16 @@
+.Equip-count-divs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 10pt;
+    background-color: #3f99dc;
+    width: 200px;
+    border-radius: 12px;
+  }
+  
+  .Equip-count-vals {
+    font-size: large;
+    font-weight: bold;
+    color: white;
+  }
