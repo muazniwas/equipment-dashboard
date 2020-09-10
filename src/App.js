@@ -27,15 +27,22 @@ class App extends Component {
     fetchAssets(max, lastRowId).then(res => {
       const current = this.state;
       const updated = setValues(current, res);
-      this.setState({
-        operational: updated.operational,
-        nonOperational: updated.nonOperational,
-        dataPoints: updated.dataPoints,
-      })
-      const resultLength = res.length;
-      lastRowId = parseInt(res[resultLength - 1].__rowid__);
-      if (resultLength === 100) {
-        this.fetchAndSetVals(max, lastRowId);
+      if(updated && res){
+        this.setState({
+          operational: updated.operational,
+          nonOperational: updated.nonOperational,
+          dataPoints: updated.dataPoints,
+        });
+        const resultLength = res.length;
+        lastRowId = parseInt(res[resultLength - 1].__rowid__);
+        if (resultLength === 100) {
+          this.fetchAndSetVals(max, lastRowId);
+        }
+      } else {
+        this.setState({
+          operational: 'n/a',
+          nonOperational: 'n/a',
+        })
       }
     });
   }
